@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import Button from "../ui/button";
+import Button from "../ui/button/button";
 import classes from "./event-item.module.scss";
 import DateIcon from "../icons/date-icon";
 import AddressIcon from "../icons/address-icon";

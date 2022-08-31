@@ -1,4 +1,4 @@
-import Button from "../ui/button";
+import Button from "../ui/button/button";
 import classes from "./results-title.module.scss";
 
 const ResultsTitle = ({ date }) => {

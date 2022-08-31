@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import EventContent from "../../components/event-detail/event-content";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventSummary from "../../components/event-detail/event-summary";
-import ErrorAlert from "../../components/events/error-alert";
+import ErrorAlert from "../../components/ui/error-alert/error-alert";
 import { getEventById, getFeaturedEvents } from "../../helpers/api-utils";
 
 const EventDetailPage = ({ event }) => {
