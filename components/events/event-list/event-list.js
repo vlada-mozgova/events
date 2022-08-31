@@ -1,4 +1,4 @@
-import EventItem from "./event-item";
+import EventItem from "../event-item/event-item";
 import classes from "./event-list.module.scss";
 
 const EventList = ({ items }) => {

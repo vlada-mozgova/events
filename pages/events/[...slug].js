@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
-import EventList from "../../components/events/event-list";
-import ResultsTitle from "../../components/events/results-title";
+import EventList from "../../components/events/event-list/event-list";
+import ResultsTitle from "../../components/ui/results-title/results-title";
 import HeadData from "../../components/head/head";
 import Button from "../../components/ui/button/button";
 import ErrorAlert from "../../components/ui/error-alert/error-alert";
