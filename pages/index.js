@@ -1,10 +1,7 @@
-import Link from "next/link";
 import EventList from "../components/events/event-list";
 import { getFeaturedEvents } from "../helpers/api-utils";
 
 const HomePage = ({ featuredEvents }) => {
-  // const featuredEvents = getFeaturedEvents();
-
   return (
     <div>
       <EventList items={featuredEvents} />
@@ -18,6 +15,7 @@ export async function getStaticProps(context) {
     props: {
       featuredEvents: data,
     },
+    revalidate: 1800,
   };
 }
 
