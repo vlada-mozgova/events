@@ -2,20 +2,24 @@ import { Fragment } from "react";
 import EventContent from "../../components/event-detail/event-content";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventSummary from "../../components/event-detail/event-summary";
-import ErrorAlert from "../../components/ui/error-alert/error-alert";
+import HeadData from "../../components/head/head";
 import { getEventById, getFeaturedEvents } from "../../helpers/api-utils";
 
 const EventDetailPage = ({ event }) => {
   if (!event) {
     return (
-      <div className="center">
-        <p>Loading...</p>
-      </div>
+      <Fragment>
+        <HeadData title={"Loading..."} description={"Loading page."} />
+        <div className="center">
+          <p>Loading...</p>
+        </div>
+      </Fragment>
     );
   }
 
   return (
     <Fragment>
+      <HeadData title={event.title} description={event.description} />
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}

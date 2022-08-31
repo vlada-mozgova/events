@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
 import EventList from "../../components/events/event-list";
 import ResultsTitle from "../../components/events/results-title";
+import HeadData from "../../components/head/head";
 import Button from "../../components/ui/button/button";
 import ErrorAlert from "../../components/ui/error-alert/error-alert";
 
@@ -31,7 +32,12 @@ const FilteredEventsPage = () => {
   }, [data]);
 
   if (!loadedEvents) {
-    return <p className="center">Loading...</p>;
+    return (
+      <Fragment>
+        <HeadData title={"Loading..."} description={"Loading page."} />
+        <p className="center">Loading...</p>
+      </Fragment>
+    );
   }
 
   const filteredYear = +filteredData[0];
@@ -48,6 +54,10 @@ const FilteredEventsPage = () => {
   )
     return (
       <Fragment>
+        <HeadData
+          title={"Invalid filter"}
+          description={"Invalid filter. Please adjust your values!"}
+        />
         <ErrorAlert>Invalid filter. Please adjust your values!</ErrorAlert>
         <div className="center">
           <Button link={"/events"}>Show All Events</Button>
@@ -66,6 +76,10 @@ const FilteredEventsPage = () => {
   if (!filteredEvents || filteredEvents.length === 0)
     return (
       <Fragment>
+        <HeadData
+          title={"No eventsr"}
+          description={"No events found for the chosen filter"}
+        />
         <ErrorAlert>No events found for the chosen filter</ErrorAlert>
         <div className="center">
           <Button link={"/events"}>Show All Events</Button>
@@ -75,10 +89,16 @@ const FilteredEventsPage = () => {
 
   const date = new Date(filteredYear, filteredMonth - 1);
   return (
-    <div>
-      <ResultsTitle date={date} />
-      <EventList items={filteredEvents} />
-    </div>
+    <Fragment>
+      <HeadData
+        title={"Filtered events"}
+        description={`Events in ${filteredMonth}/${filteredYear}`}
+      />
+      <div>
+        <ResultsTitle date={date} />
+        <EventList items={filteredEvents} />
+      </div>
+    </Fragment>
   );
 };
 
