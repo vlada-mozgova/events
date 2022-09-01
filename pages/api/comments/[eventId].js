@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { getAllDocuments } from "../../../helpers/db-utils";
 const url =
   "mongodb+srv://vlada:H2gAC5Lk@cluster0.7art7wy.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(url);
@@ -32,7 +33,11 @@ const handler = async (req, res) => {
     res.status(201).json({ message: "Added comment!", comment: newComment });
   }
   if (req.method === "GET") {
-    const documents = await collection.find().sort({ _id: -1 }).toArray();
+    const documents = await getAllDocuments(
+      collection,
+      { _id: -1 },
+      { eventId: eventId }
+    );
 
     res.status(200).json({ comments: documents });
   }
