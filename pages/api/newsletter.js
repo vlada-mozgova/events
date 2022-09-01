@@ -1,7 +1,4 @@
-import { MongoClient } from "mongodb";
-const url =
-  "mongodb+srv://vlada:H2gAC5Lk@cluster0.7art7wy.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(url);
+import { connectDatabase, insertDocument } from "../../helpers/db-utils";
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
@@ -12,13 +9,19 @@ const handler = async (req, res) => {
       return;
     }
 
-    await client.connect();
-    const collection = client.db("events").collection("emails");
-    await collection.insertOne({ email: userEmail });
-
-    client.close();
-
-    res.status(201).json({ message: "Signed up!" });
+    let client;
+    try {
+      client = await connectDatabase();
+    } catch (error) {
+      res.status(500).json({ message: "Connectiong to the database failed!" });
+      return;
+    }
+    try {
+      await insertDocument(client, "emails", { email: userEmail });
+      res.status(201).json({ message: "Signed up!" });
+    } catch (error) {
+      res.status(500).json({ message: "Inserting data failed!" });
+    }
   }
 };
 
