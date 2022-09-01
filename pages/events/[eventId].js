@@ -3,6 +3,7 @@ import EventContent from "../../components/event-detail/event-content/event-cont
 import EventLogistics from "../../components/event-detail/event-logistics/event-logistics";
 import EventSummary from "../../components/event-detail/event-summary/event-summary";
 import HeadData from "../../components/head/head";
+import Comments from "../../components/input/comments/comments";
 import { getEventById, getFeaturedEvents } from "../../helpers/api-utils";
 
 const EventDetailPage = ({ event }) => {
@@ -30,6 +31,7 @@ const EventDetailPage = ({ event }) => {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id} />
     </Fragment>
   );
 };
