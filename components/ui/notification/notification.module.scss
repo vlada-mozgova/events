@@ -1,0 +1,37 @@
+.notification {
+  position: fixed;
+  bottom: 35px;
+  right: 32px;
+  width: fit-content;
+  min-width: 230px;
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  align-items: center;
+  color: white;
+  padding: 5px 10px;
+  box-shadow: 0 -3px 6px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: white;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.pending {
+  background-color: #177cbe;
+}
+
+.success {
+  background-color: #10be58;
+}
+
+.error {
+  background-color: #e65035;
+}
